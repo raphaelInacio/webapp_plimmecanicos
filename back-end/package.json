@@ -1,0 +1,17 @@
+{
+  "name": "back-end",
+  "version": "1.0.0",
+  "description": "back-end da plataforma plimmecanicos",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "mecanicos",
+    "marketplace",
+    "oficina",
+    "startup"
+  ],
+  "author": "Raphael Inacio",
+  "license": "ISC"
+}

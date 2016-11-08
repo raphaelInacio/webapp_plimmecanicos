@@ -1,0 +1,26 @@
+{
+  "name": "front-end",
+  "authors": [
+    "raphaelInacio <contato.raphaelinacio@gmail.com>"
+  ],
+  "description": "front end plimmecanicos",
+  "main": "index.hthml",
+  "keywords": [
+    "mecanicos",
+    "marketplace",
+    "oficinas",
+    "carros",
+    "startup"
+  ],
+  "license": "MIT",
+  "homepage": "www.plimmecanicos.com.br",
+  "dependencies": {
+    "angular": "^1.5.8",
+    "bootstrap": "boostrap#^3.3.7",
+    "angular-route": "^1.5.8",
+    "materialize": "^0.97.7"
+  },
+  "devDependencies": {
+    "Bootflat": "^2.0.4"
+  }
+}

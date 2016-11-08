@@ -1,0 +1,809 @@
+<html>
+<head>
+    <title>Plim Mecânicos | Solicite um orçamento para seu reparo</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Solicite um orçamento para agendar reparos em oficinas parceiras ou atendimentos em domicílio" />
+    <meta name="author" content="R.I. Serviços Digitais" />
+    <link rel="shortcut icon" href="resources/images/gt_favicon.png" />
+    <link rel="stylesheet" type="text/css"
+    href="resources/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css"
+    href="resources/css/font-awesome.min.css" />
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css"href="resources/css/flaticon.css" />
+    <link rel="stylesheet" media="screen"
+    href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700" />
+
+    <!-- Custom styles for our template -->
+    <link rel="stylesheet" type="text/css" href="resources/css/especifico.css" />
+    <link rel="stylesheet" type="text/css"
+    href="resources/css/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="resources/css/main.css" />
+    <link href="resources/maps/estilo.css" type="text/css" rel="stylesheet" />
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+
+    <style type="text/css">
+        .popover-content,.popover-title {
+            color: #000
+        }
+
+        #head {
+            padding-top: 80px;
+        }
+
+        .escolha{
+            cursor: pointer;
+        }
+
+        .escolha{
+            color: #5bc0de;
+            text-decoration: none;
+            background-color: #f5f5f5;
+        }
+
+        .escolha:hover, .escolha-active{
+            background-color: #5bc0de;
+            color: #FFFFFF;
+        }
+
+    </style>
+
+</head>
+<body onLoad="obterMarcas(); obterCarro(); initialize();">
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-inverse navbar-fixed-top headroom"
+    style="background: #2687e9">
+    <div class="container">
+        <div class="navbar-header">
+            <!-- Button for smallest screens -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+            data-target=".navbar-collapse">
+            <span class="icon-bar"></span> <span class="icon-bar"></span> <span
+            class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html"><img
+            src="resources/images/logo-2.png" alt="Plim Mecânicos" /></a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+               <li><a href="comofunciona.html" style="color:#FFF; text-shadow: 1px 1px 5px #060606;" class="active"><strong>Como funciona</strong></a></li>
+               <li><a href="servicos.html" style="color:#FFF; text-shadow: 1px 1px 5px #060606;" class="active"><strong>Serviços</strong></a></li>  
+               <li><a href="parceiros.html" style="color:#FFF; text-shadow: 1px 1px 5px #060606;" class="active"><strong>Parcerias</strong></a></li>    
+               <li>
+                <button type="button" onClick="location.href='pedido.html'" 
+                class="form-group btn btn-success btn-sm"
+                style="width: 100%; font-size: 18px; text-shadow: 1px 1px 1px #575353;">
+                Solicitar Reparo
+            </button>
+        </li>
+    </ul>
+</div>
+</div>
+</div>
+<!-- /.navbar -->
+<!-- Highlights - jumbotron -->
+<div class="top-space" style="padding-top:30px">
+    <div class="container">
+        <div class="row highlight">
+            <h2 class="text-left thin" style="color: #2687e9;">Encontre um mecânico para consertar seu carro de forma simples e rápida </h2>
+            <div class="col-md-8 col-sm-6">
+
+
+                <input type="hidden" name="endereco" id="hidden_endereco">
+                <input type="hidden" name="bairro"   id="hidden_bairro">
+                <input type="hidden" name="cidade" id="hidden_cidade">
+                <input type="hidden" name="estado" id="hidden_estado">
+                <input type="hidden" name="veiculo" id="hidden_estado">
+                <input type="hidden" name="hidden_veiculo" id="hidden_veiculo">
+                <input type="hidden" name="hidden_montadora" id="hidden_montadora">
+                <input type="hidden" name="hidden_ano" id="hidden_ano">
+
+                <div class="row well" id="carroRequest">
+                    <h4 class="thin" style=" color: #2687e9"><strong> Que tipo de carro você tem? </strong></h4>
+                    <div class="col-xs-12">
+                        <div class="col-xs-12 col-md-4">
+                            <div class="form-group text-left" style="width: 100%;">
+                                <h4 class="thin" style=" color: #2687e9">Montadora</h4>
+                                <div>
+                                    <select name="montadora" class="form-control"
+                                    style="height: 45px; width: 100%"
+                                    title="Informe o problema do seu carro" id="montadora" onChange="obterModelo();preencherPedido();">
+                                    <option value="0">Aguarde...</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-md-4">
+                        <div class="form-group text-left" style="width: 100%;">
+                            <h4 class="thin" style=" color: #2687e9">Veículo</h4>
+                            <div>
+                                <select name="veiculo" class="form-control"
+                                style="height: 45px; width: 100%"
+                                title="Informe o veículo" id="veiculo" onChange="obterAno();preencherPedido();">
+                                <option value="0">Aguarde...</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-md-4">
+                    <div class="form-group text-left" style="width: 100%;">
+                        <h4 class="thin" style=" color: #2687e9">Ano</h4>
+                        <div>
+                            <select name="ano" class="form-control"
+                            style="height: 45px; width: 100%"
+                            title="Informe o problema do seu carro" id="ano" onChange="preencherPedido();">
+                            <option value="0">Aguarde...</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row well">
+        <h4 class="thin" style=" color: #2687e9;"><strong> Qual serviço ou problema você precisa fazer ou resolver? </strong> </h4>
+        <div class="col-xs-12">
+            <!-- Select Basic -->
+            <div class="control-group">
+                <div class="controls">
+                    <select id="servico" name="servico" class="form-control" onChange="preencherPedido();" style="height: 45px; width: 100%">
+                        <option selected="selected">Selecione uma das opções</option>
+                        <option value="Não sei o problema">Não sei o problema</option>
+                        <option value="Acessórios">Acessórios</option>
+                        <option value="Retifica completa">Retifica completa</option>
+                        <option value="Cabeçotes">Cabeçotes</option>
+                        <option value="Injeção eletrônica com diagnóstico computadorizado">Injeção eletrônica com diagnóstico computadorizado</option>
+                        <option value="Alimentação de combustível">Alimentação de combustível</option>
+                        <option value="Bombas de combustível">Bombas de combustível</option>
+                        <option value="Correias dentadas e Poly.V">Correias dentadas e Poly.V</option>
+                        <option value="Cabos">Cabos</option>
+                        <option value="Velas">Velas</option>
+                        <option value="Bobinas">Bobinas</option>
+                        <option value="Carburador">Carburador</option>
+                        <option value="Reparo de compressores">Reparo de compressores</option>
+                        <option value="Condensadores">Condensadores</option>
+                        <option value="Evaporadores">Evaporadores</option>
+                        <option value="Análise e diagnóstico do sistema de Ar Condicionado">Análise e diagnóstico do sistema de Ar Condicionado</option>
+                        <option value="Recuperação e reciclagem de Gás">Recuperação e reciclagem de Gás</option>
+                        <option value="Detecção e reparo de vazamentos">Detecção e reparo de vazamentos</option>
+                        <option value="Higienizar">Higienizar</option>
+                        <option value="Substituir filtros de Pólen">Substituir filtros de Pólen</option>
+                        <option value="Freio ABS">Freio ABS</option>
+                        <option value="Análise e diagnóstico do sistema de freios">Análise e diagnóstico do sistema de freios</option>
+                        <option value="Troca de pastilhas">Troca de pastilhas</option>
+                        <option value="Troca de Discos e lonas">Troca de Discos e lonas</option>
+                        <option value="Troca de Tambores">Troca de Tambores</option>
+                        <option value="Troca de Fluído">Troca de Fluído</option>
+                        <option value="Troca de embreagens">Troca de embreagens</option>
+                        <option value="Troca de Câmbios">Troca de Câmbios</option>
+                        <option value="Sistema de transmissão">Sistema de transmissão</option>
+                        <option value="Troca de óleo">Troca de óleo</option>
+                        <option value="Troca de filtros de motor">Troca de filtros de motor</option>
+                        <option value="Troca de filtros de câmbio">Troca de filtros de câmbio</option>
+                        <option value="Troca de filtros do diferencial">Troca de filtros do diferencial</option>
+                        <option value="Limpeza das galerias de óleo do motor">Limpeza das galerias de óleo do motor</option>
+                        <option value="Análise e diagnóstico do sistema de arrefecimento">Análise e diagnóstico do sistema de arrefecimento</option>
+                        <option value="Bomba d'água">Bomba d'água</option>
+                        <option value="Válvula termostática">Válvula termostática</option>
+                        <option value="Radiadores e reservatórios de expansão">Radiadores e reservatórios de expansão</option>
+                        <option value="Recuperação e recarga do líquido arrefecedor">Recuperação e recarga do líquido arrefecedor</option>
+                        <option value="Revisões periódicas de acordo com o manual do veículo">Revisões periódicas de acordo com o manual do veículo</option>
+                        <option value="Substituição de peças nas kilometragens recomendadas">Substituição de peças nas kilometragens recomendadas"</option>
+                        <option value="Diagnóstico computadorizado">Diagnóstico computadorizado</option>
+                        <option value="Coxins">Coxins</option>
+                        <option value="Troca de amortecedores">Troca de amortecedores</option>
+                        <option value="Troca de Molas">Troca de Molas</option>
+                        <option value="Troca de Bandejas">Troca de Bandejas</option>
+                        <option value="Troca de rolamentos">Troca de rolamentos</option>
+                        <option value="Pneus">Pneus</option>
+                        <option value="Baterias">Baterias</option>
+                        <option value="Alternadores">Alternadores</option>
+                        <option value="Motores de partida">Motores de partida</option>
+                        <option value="Lâmpadas">Lâmpadas</option>
+                        <option value="Reparo de caixas de direção">Reparo de caixas de direção</option>
+                        <option value="Bombas Hidráulicas">Bombas Hidráulicas</option>
+                        <option value="Braços axiais / Terminais">Braços axiais / Terminais</option>
+                        <option value="Alinhamento eletrônico">Alinhamento eletrônico</option>
+                        <option value="Balanceamento">Balanceamento</option>
+                        <option value="Outros serviços">Outros serviços</option>
+                    </select>
+                </div>
+            </div>
+
+            <h4 class="thin" style=" color: #2687e9">Insira detalhes sobre o serviço que deseja fazer, caso não saiba o problema informe o que esta acontecendo com o carro que entraremos em contato*</h4>
+            <div class="text-left" style="width: 100%;">
+                <div class="">
+                    <textarea onChange="preencherPedido();" class="form-control" rows="3" name="detalhes" id="detalhes" style="width: 100%;" placeholder="Ex. O carro não da partida, quero fazer a troca de óleo, não sei o problema preciso de uma avaliação, motor esta engasgando, sinto um leve trepidação quando estou dirigindo e etc.." title="Informe o problema do seu carro"></textarea>
+                    <p style="color:red; display:none;" id="detalhes-erro"><strong>Campo de preenchimento obrigatório</strong></p>
+                </div>
+                <!-- Multiple Checkboxes (inline) -->
+                <div class="control-group" style="padding-top:10px">
+                   <h4 class="thin" style="color: #2687e9"><strong>Marque o tipo de atendimento que deseja</strong></h4>
+                   <div class="controls">
+                    <label class="checkbox-inline" for="tipoDomicilio" >
+                        <input type="checkbox" name="tipoDomicilio" id="tipoDomicilio" value="Atendimento em domicilio" onclick="tipoDomicilio();"
+                        data-container="body" data-toggle="popover" data-placement="bottom" data-content="Solicite uma cotação para atendimento em domicílio">
+                        <span  style=" color: #2687e9"> Atendimento em domicílio </span>
+                    </label>
+                    <label class="checkbox-inline" for="tipoOficina">
+                        <input type="checkbox" name="tipoOficina" id="tipoOficina" value="Atendimento em oficina" onclick="tipoOficina();"
+                        data-container="body" data-toggle="popover" data-placement="bottom" data-content="Solicite uma cotação e agende um horário para seu carro em uma oficina próxima de você">
+                        <span  style=" color: #2687e9"> Agendamento em oficina </span>
+                    </label>
+                    <label class="checkbox-inline" for="tipoLevaTraz">
+                        <input type="checkbox" name="tipoLevaTraz" id="tipoLevaTraz" value="Serviço leva e traz" onclick="tipoLevaTraz();" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Solicite uma cotação para o serviço de leva e traz em uma oficina próxima de você">
+                        <span  style=" color: #2687e9"> Serviço leva e traz </span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- Columns are always 50% wide, on mobile and desktop -->
+<div class="row well">
+    <h4 class="thin" style=" color: #2687e9;"><strong> Onde você está?
+    </strong> </h4>
+    <div class="col-xs-12 col-md-7" style="">
+        <div class="text-left" style="width: 100%;">
+            <h4 class="thin" style=" color: #2687e9">Endereço*</h4>
+            <div>
+                <input type="text" class="form-control" id="autocomplete"
+                placeholder="Informe o cep ou endereço para localizarmos" 
+                style="height: 45px; width: 100%; " required="" 
+                onChange="preencherPedido();"
+                title="Informe o cep ou endereço para localizarmos"  onFocus="geolocate()" >
+            </div>
+            <div class="text-left" style="">
+                <p id="cep_invalido" style="color: #000; font-size: 12px;">Não sabe seu CEP?<a href="http://www.buscacep.correios.com.br/servicos/dnec/menuAction.do?Metodo=menuLogradouro" target="_blank"> Clique aqui! </a></p>
+            </div>
+            <div class="text-left" style="">
+                <p style="color:red; display:none;" id="cep-erro"><strong>Campo de preenchimento obrigatório</strong></p>
+                <p id="cep_invalido" style="color:red; display:none;">Cep inválido!</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-md-12" style="padding-top: 10px;">
+                <div class="form-group text-center" style="width: 100%; color: #000000;">
+                    <div class="text-left" style="">
+                        <p id="cep_cliente"></p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-2">
+        <div class="form-group text-left" style="width: 100%;">
+            <h4 class="thin" style="color: #2687e9">Nº*</h4>
+            <div>
+                <input type="text" class="form-control" id="numero" name="numero"
+                placeholder="122"
+                style="height: 45px; width: 100%" required=""
+                title="Informe seu nome" onChange="preencherPedido();">
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-3">
+        <div class="form-group text-left" style="width: 100%;">
+            <h4 class="thin" style="color: #2687e9">Complemento</h4>
+            <div>
+                <input type="text" class="form-control" id="complemento" name="complemento"
+                placeholder="Apto. 03 Bloco 10"
+                style="height: 45px; width: 100%"
+                title="Informe seu nome" onChange="preencherPedido();">
+            </div>
+        </div>
+    </div>
+   <!--  <div class="col-md-12 col-xs-12" id="blocoMapa">
+       <h4 class="thin" style="color: #2687e9"><strong>Selecione as oficinas que deseja pedir cotação</strong></h4>
+       <input type="hidden" id="txtLatitude" name="txtLatitude" />
+       <input type="hidden" id="txtLongitude" name="txtLongitude" />
+       <div id="mapa"></div> 
+   </div> -->
+</div>
+
+<!-- Columns are always 50% wide, on mobile and desktop -->
+<div class="row well">
+    <h4 class="thin" style=" color: #2687e9"><strong> Como podemos entrar em contato com você para enviar seu orçamento?</strong></h4>
+    <div class="col-md-12">
+        <div class="form-group text-left" style="width: 100%;">
+            <h4 class="thin" style=" color: #2687e9">Nome*</h4>
+            <div>
+                <input type="nome" class="form-control" id="nome"
+                name="nome" placeholder="Informe seu nome"
+                style="height: 45px; width: 100%" required=""
+                title="Informe seu nome" onChange="preencherPedido();">
+            </div>
+            <p style="color:red; display:none;" id="nome-erro"><strong>Campo de preenchimento obrigatório</strong></p>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group text-left" style="width: 100%;">
+            <h4 class="thin" style=" color: #2687e9">Email*</h4>
+            <div>
+                <input required="" type="email" class="form-control" id="email"
+                name="email" placeholder="Informe seu email"
+                style="height: 45px; width: 100%" required=""
+                title="Informe seu email" onChange="preencherPedido();">
+            </div>
+            <p style="color:red; display:none;" id="email-erro"><strong>Campo de preenchimento obrigatório</strong></p>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group text-left" style="width: 100%;">
+            <h4 class="thin" style=" color: #2687e9">Telefone*</h4>
+            <div>
+                <input required="" type="tel" class="form-control" id="tel"
+                name="tel" placeholder="Informe seu telefone"
+                style="height: 45px; width: 100%" required=""
+                title="Informe seu telefone" maxlength="15" onChange="preencherPedido();">
+            </div>
+            <p style="color:red; display:none;" id="tel-erro"><strong>Campo de preenchimento obrigatório</strong></p>
+        </div>
+    </div>
+    <div class="col-xs-12" style="padding-top: 30px;">
+        <div class="form-group text-center" style="width: 100%;">
+            <div>
+                <button type="button" data-loading-text="Enviando pedido..."
+                class="form-group btn btn-primary text-left" id="enviar" 
+                style="width: 100%; font-size: 20px; height: 50px; text-shadow: 1px 1px 1px #575353;">Enviar pedido agora!</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- Columns are always 50% wide, on mobile and desktop -->
+<div class="row">
+
+</div>
+<!--</form>-->
+<div class="text-center">
+    <p> </p>
+</div>
+</div>
+
+<nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix-top">
+    <div class="col-md-4 col-sm-6">
+        <div class="well">
+            <h4 class="text-left" style="color: #4CAE4C;">
+                <strong>Se precisar de ajuda, fale conosco.</strong>
+            </h4>
+            <p class="text-left" style="color: #2687e9;">
+                <strong class="text-right">
+                    <span class="">WhatsApp: </span> (11) 9.5495-0529 </strong>
+                </p>
+                <p class="text-left" style="color: #2687e9;">
+                    <strong class="text-right">
+                        <a href="javascript:void(0);" onclick="olark('api.box.expand')">
+                            <span class="glyphicon glyphicon-comment" style="color: #2687e9">
+                            </span> Chat On-line: </a> </strong> </p>
+                            <p class="text-left" style="color: #2687e9;"><strong class="text-right">
+                                <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> 
+                                <a href="mailto:contato@plimmecanicos.com.br">contato@plimmecanicos.com.br</a> </strong> 
+                            </p>
+                        </div>
+                        
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                        <div class="well">
+                            <div style="height: 550px">
+                                <h4  class="page-header">
+                                    <strong>Seu Pedido</strong>
+                                </h4>
+                                <!--<p><strong>Tipo de veículo:</strong><span class="pull-right pedido_tipo_veiculo"></span></p>-->
+                                <p style="font-size: smaller;"><strong>Montadora:</strong> <span class="pull-right pedido_montadora" ></span></p>
+                                <p style="font-size: smaller;"><strong>Veículo:</strong> <span class="pull-right pedido_veiculo"></span></p>
+                                <p style="font-size: smaller;"><strong>Ano:</strong> <span class="pull-right pedido_ano"></span></p>
+                                <p style="font-size: smaller;"><strong>Serviço:</strong> <span class="pull-right pedido_servico"></span></p>
+                                <p style="font-size: smaller;"><strong>Detalhes:</strong> <span class="pull-right pedido_detalhes"></span></p>
+                                <p style="font-size: smaller;"><strong>Tipo de Atendimento:</strong> <span class="pull-right tipo"></span></p>
+                                <p style="font-size: smaller;" class="p_pedido_endereco"><strong>Endereço:</strong> <span class="pull-right pedido_endereco"></span></p>
+                                <p style="font-size: smaller;" ><strong>Numero:</strong> <span class="pull-right numero"></span></p>
+                                <p style="font-size: smaller;" ><strong>Complemento:</strong> <span class="pull-right complemento"></span></p>
+                                <!-- <p style="font-size: smaller;"><strong>Oficina(s):</strong> <span class="pull-right emailOficina"></span></p> -->
+                                <p style="font-size: smaller;"><strong>Nome:</strong><span class="pull-right pedido_nome"></span></p>
+                                <p style="font-size: smaller;"><strong>Email:</strong> <span class="pull-right pedido_email"></span></p>
+                                <p style="font-size: smaller;"><strong>Telefone:</strong> <span class="pull-right pedido_telefone"></span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /row  -->
+                </nav>
+                
+            </div>
+        </div>
+        <!-- container -->
+        <!-- Fim Conteudo -->
+        
+        <!--Footer  -->
+        <!--Footer  -->
+        <div id="footer">
+            <div class="footer1" style="background-color: #2687e9; color: white;">
+
+                <div class="container">     
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-md-12 widget" >
+                                <h3 class="widget-title" style="color: #FDD72F;">Marcas mais populares</h3>
+                                <div class="col-md-4 widget-body">
+                                    <ul class="list-unstyled">
+                                        <li><a href="pedido.html">Chevrolet</a></li>
+                                        <li><a href="pedido.html">Fiat</a></li>
+                                        <li><a href="pedido.html">Ford</a></li>
+                                        <li><a href="pedido.html">Honda</a></li>
+                                        <li><a href="pedido.html">Hyunday</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-4 widget-body">
+                                    <ul class="list-unstyled">
+                                        <li><a href="pedido.html">Mitsubishi</a></li>
+                                        <li><a href="pedido.html">Renault</a></li>
+                                        <li><a href="pedido.html">Chevrolet</a></li>
+                                        <li><a href="pedido.html">Toyota</a></li>
+                                        <li><a href="pedido.html">VolksWagem</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /row of widgets -->
+
+                        <div class="row">
+                            <div class="col-md-12 widget" >
+                                <h3 class="widget-title" style="color: #FDD72F;">Serviços mais procurados</h3>
+                                <div class="col-md-4 widget-body">
+                                    <ul class="list-unstyled">
+                                        <li><a href="pedido.html">Alinhamento</a></li>
+                                        <li><a href="pedido.html">Balanceamento</a></li>
+                                        <li><a href="pedido.html">Suspenção</a></li>
+                                        <li><a href="pedido.html">Troca de óleo e Filtro</a></li>
+                                        <li><a href="pedido.html">Troca de Bateria e Cabos </a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-4 widget-body">
+                                    <ul class="list-unstyled">
+                                        <li><a href="pedido.html">Manutencão Preventiva</a></li>
+                                        <li><a href="pedido.html">Problemas Elétricos</a></li>
+                                        <li><a href="pedido.html">Pastilhas de Freio</a></li>
+                                        <li><a href="pedido.html">Troca de velas</a></li>
+                                        <li><a href="pedido.html">Embreagem</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 widget" >
+                                <h3 class="widget-title" style="color: #FDD72F;">Encontre oficínas mecânicas parceiras Plim Mecânicos</h3>
+                                <div class="col-md-4 widget-body">
+                                    <ul class="list-unstyled">
+                                        <li><a href="pedido.html">Barra Funda</a></li>
+                                        <li><a href="pedido.html">Bela Vista</a></li>
+                                        <li><a href="pedido.html">Bom Retiro</a></li>
+                                        <li><a href="pedido.html">Brás</a></li>
+                                        <li><a href="pedido.html">Consolação</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-4 widget-body">
+                                    <ul class="list-unstyled">
+                                        <li><a href="pedido.html">Casa Verde</a></li>
+                                        <li><a href="pedido.html">Santana</a></li>
+                                        <li><a href="pedido.html">Vila Guilherme</a></li>
+                                        <li><a href="pedido.html">Vila Maria</a></li>
+                                        <li><a href="pedido.html">Tucuruvi</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-4 widget-body">
+                                    <ul class="list-unstyled">
+                                        <li><a href="pedido.html">Casa Verde</a></li>
+                                        <li><a href="pedido.html">Santana</a></li>
+                                        <li><a href="pedido.html">Vila Guilherme</a></li>
+                                        <li><a href="pedido.html">Vila Maria</a></li>
+                                        <li><a href="pedido.html">Tucuruvi</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-4 widget-body">
+                                    <ul class="list-unstyled">
+                                        <li><a href="pedido.html">Moóca</a></li>
+                                        <li><a href="pedido.html">Belém</a></li>
+                                        <li><a href="pedido.html">Tatuapé</a></li>
+                                        <li><a href="pedido.html">Vila Matilde</a></li>
+                                        <li><a href="pedido.html">Vila Prudente</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-4 widget-body">
+                                    <ul class="list-unstyled">
+                                        <li><a href="pedido.html">Moóca</a></li>
+                                        <li><a href="pedido.html">Belém</a></li>
+                                        <li><a href="pedido.html">Tatuapé</a></li>
+                                        <li><a href="pedido.html">Vila Matilde</a></li>
+                                        <li><a href="pedido.html">Vila Prudente</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-4 widget-body">
+                                    <ul class="list-unstyled">
+                                        <li><a href="pedido.html">Moóca</a></li>
+                                        <li><a href="pedido.html">Belém</a></li>
+                                        <li><a href="pedido.html">Tatuapé</a></li>
+                                        <li><a href="pedido.html">Vila Matilde</a></li>
+                                        <li><a href="pedido.html">Vila Prudente</a></li>
+                                    </ul>
+                                </div>
+                                <p style=""> Quer ser um parceiro, <a class="typeform-share" href="https://plimmecanicos.typeform.com/to/rfksze" data-mode="1" target="_blank" style="color: #FDD72F;text-decoration:underline;">cadastre-se</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-4">
+                        <div class="row">
+                            <div class="col-md-12 widget" style="background-color: white;">
+                                <iframe src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2Fplimmecanicos&amp;width&amp;height=258&amp;colorscheme=light&amp;show_faces=true&amp;header=false&amp;stream=false&amp;show_border=false" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:258px;width: 100%;padding: 25px;" allowTransparency="true"></iframe>
+                            </div>
+                            <div class="col-md-12 widget" >
+                                <h3 class="widget-title" style="color: #FDD72F;">Fale conosco</h3>
+                                <div class="widget-body">
+                                    <p>
+                                        (11) 3230-1992<br /> <a style="color: #FDD72F;text-decoration:underline;" 
+                                        href="mailto:contato@plimmecanicos.com.br">contato@plimmecanicos.com.br</a><br />
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-12 widget" >
+                                <h3 class="widget-title" style="color: #FDD72F;">Onde estamos</h3>
+                                <div class="widget-body">
+                                    <p>
+                                        R. Eng. José Sá Rocha, 173<br /> 
+                                        Vila Mariana, São Paulo/SP
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                    </div>
+                </div>
+            </div>  
+
+        </div>
+    </div>
+    <div class="footer2">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 widget">
+                    <div class="widget-body"></div>
+                </div>
+                <div class="col-md-6 widget">
+                    <div class="widget-body">
+                        <p class="text-right">
+                            Copyright &copy; 2014, Plim Mecânicos. Designed by <a
+                            href="http://riservicosdigitais.com.br/" rel="designer">R.I.
+                            Serviços Digitais</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- /row of widgets -->
+        </div>
+    </div>
+</div>
+<!--Footer  -->
+
+<!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="resources/js/headroom.min.js"></script>
+<script src="resources/js/jQuery.headroom.min.js"></script>
+<script src="resources/js/template.js"></script>
+<script type="text/javascript" src="https://mandrillapp.com/api/docs/js/mandrill.js"></script>
+<script type="text/javascript" src="resources/js/send-email.js"></script>   
+<script type="text/javascript" src="resources/maps/g4.js"></script>
+<script type="text/javascript" src="resources/maps/mapa.js"></script>
+<script>  
+
+        // [START region_geolocation]
+// Bias the autocomplete object to the user's geographical location,
+// as supplied by the browser's 'navigator.geolocation' object.
+function geolocate() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var geolocation = new google.maps.LatLng(
+          position.coords.latitude, position.coords.longitude);
+      var circle = new google.maps.Circle({
+        center: geolocation,
+        radius: position.coords.accuracy
+    });
+      autocomplete.setBounds(circle.getBounds());
+  });
+}
+}
+// [END region_geolocation]
+function obterMarcas(){
+    $.ajax({
+        url: 'http://fipeapi.appspot.com/api/1/carros/marcas.json',
+        dataType: 'jsonp',
+        crossDomain: true,
+        contentType: "application/json",
+        statusCode: {
+            200: function(data) { 
+                carregarMarcas(data);
+            }
+            ,400: function(msg) { console.log(msg);  } 
+            ,404: function(msg) { console.log("CEP não encontrado!!"); } 
+        }
+    });
+}
+
+function carregarMarcas(marcas){
+    var options = "<option value='0'> Selecione... </option>";
+    for (var i = 0; i < marcas.length; i++) {
+        options += '<option value="' + marcas[i].id + '">' + marcas[i].fipe_name + '</option>';
+    }
+    $("#montadora").html(options);
+}
+
+function obterModelo(){
+
+    $('#modal-load').modal('show'); 
+    var optionSelectMarca = montadora.options[montadora.selectedIndex].value;   
+    var url = 'http://fipeapi.appspot.com/api/1/carros/veiculos/'+ optionSelectMarca + '.json';
+    $.ajax({
+        url: url,
+        dataType: 'jsonp',
+        crossDomain: true,
+        contentType: "application/json",
+        statusCode: {
+            200: function(data) { 
+                carregarModelos(data);
+                $('#modal-load').modal('hide');
+            }
+            ,400: function(msg) { $('#modal-load').modal('hide');} 
+            ,404: function(msg) { $('#modal-load').modal('hide');} 
+        }
+    });
+}
+
+
+function carregarModelos(modelo){
+    var options = "<option value='0'> Selecione... </option>";
+    for (var i = 0; i < modelo.length; i++) {
+        options += '<option value="' + modelo[i].id + '">' + modelo[i].name + '</option>';
+    }
+    $("#veiculo").html(options);
+}
+
+
+function obterAno(){
+
+    $('#modal-load').modal('show');
+    var optionSelectMarca = montadora.options[montadora.selectedIndex].value;
+    var optionSelectModelo = veiculo.options[veiculo.selectedIndex].value;
+
+    var url = 'http://fipeapi.appspot.com/api/1/carros/veiculo/'+ optionSelectMarca +'/' + optionSelectModelo + '.json';
+    $.ajax({
+        url: url,
+        dataType: 'jsonp',
+        crossDomain: true,
+        contentType: "application/json",
+        statusCode: {
+            200: function(data) { 
+                carregarAno(data);
+                $('#modal-load').modal('hide');
+            }
+            ,400: function(msg) { $('#modal-load').modal('hide'); } 
+            ,404: function(msg) { $('#modal-load').modal('hide'); } 
+        }
+    });
+    
+}
+
+
+function carregarAno(ano){
+    var options = "<option value='0'> Selecione... </option>";
+    for (var i = 0; i < ano.length; i++) {
+        options += '<option value="' + ano[i].id + '">' + ano[i].name + '</option>';
+    }
+    $("#ano").html(options);
+}
+
+function preencherHiddenTrocaOleo () {
+    preencherPedido();
+}
+
+$('#enviar').on('click', function () {
+    var $btn = $(this).button('loading')
+    $('#modal-load').modal('show');
+    if(validarPedido() == true){
+        setTimeout(function(){ enviarPedido(); }, 3000);
+        setTimeout(function(){ location.href="sucesso.html"; }, 10000);
+    }else{
+        $('#modal-load').modal('hide');
+        $btn.button('reset')
+    }
+
+});
+
+
+function validarPedido(){
+
+    var erro = 0
+
+    if($("#detalhes").val() == ""){
+        $("#detalhes-erro").css("display","block"); 
+        erro = 1
+    } 
+    if($("#cep").val() == ""){
+        $("#cep-erro").css("display","block");
+        erro = 1;       
+    }
+    if( $("#nome").val() == ""){
+        $("#nome-erro").css("display","block");
+        erro = 1
+    } 
+    if($("#email").val() == ""){
+        $("#email-erro").css("display","block");
+        erro = 1
+    } 
+    if($("#tel").val() == ""){
+        $("#tel-erro").css("display","block");
+        erro = 1
+    } 
+    
+    if(erro == 1){
+        return false
+    }else{
+        return true;
+    }
+}
+
+</script>
+
+
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places"></script>
+
+<div class="modal fade" data-backdrop="static" data-keyboard="false" id="modal-load" tabindex="-1" role="dialog" aria-hidden="true" style="padding-top:15%; overflow-y:visible;"> +
+    <div class="modal-dialog modal-m"> 
+        <div class="modal-content"> 
+            <div class="modal-header" style="background-color: #2687e9;">
+                <div class="row">
+                    <div class="col-xs-12 text-center">
+                        <img src="resources/images/logo-app-min-plim.png" alt="..." class="" width="100px">
+                    </div>
+                </div></div> 
+                <div class="modal-body"> 
+                    <div class="progress progress-striped active" style="margin-bottom:0;"><div class="progress-bar" style="width: 100%"></div></div> 
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- begin olark code -->
+<script data-cfasync="false" type='text/javascript'>/*<![CDATA[*/window.olark||(function(c){var f=window,d=document,l=f.location.protocol=="https:"?"https:":"http:",z=c.name,r="load";var nt=function(){
+f[z]=function(){
+(a.s=a.s||[]).push(arguments)};var a=f[z]._={
+},q=c.methods.length;while(q--){(function(n){f[z][n]=function(){
+f[z]("call",n,arguments)}})(c.methods[q])}a.l=c.loader;a.i=nt;a.p={
+0:+new Date};a.P=function(u){
+a.p[u]=new Date-a.p[0]};function s(){
+a.P(r);f[z](r)}f.addEventListener?f.addEventListener(r,s,false):f.attachEvent("on"+r,s);var ld=function(){function p(hd){
+hd="head";return["<",hd,"></",hd,"><",i,' onl' + 'oad="var d=',g,";d.getElementsByTagName('head')[0].",j,"(d.",h,"('script')).",k,"='",l,"//",a.l,"'",'"',"></",i,">"].join("")}var i="body",m=d[i];if(!m){
+return setTimeout(ld,100)}a.P(1);var j="appendChild",h="createElement",k="src",n=d[h]("div"),v=n[j](d[h](z)),b=d[h]("iframe"),g="document",e="domain",o;n.style.display="none";m.insertBefore(n,m.firstChild).id=z;b.frameBorder="0";b.id=z+"-loader";if(/MSIE[ ]+6/.test(navigator.userAgent)){
+b.src="javascript:false"}b.allowTransparency="true";v[j](b);try{
+b.contentWindow[g].open()}catch(w){
+c[e]=d[e];o="javascript:var d="+g+".open();d.domain='"+d.domain+"';";b[k]=o+"void(0);"}try{
+var t=b.contentWindow[g];t.write(p());t.close()}catch(x){
+b[k]=o+'d.write("'+p().replace(/"/g,String.fromCharCode(92)+'"')+'");d.close();'}a.P(2)};ld()};nt()})({
+loader: "static.olark.com/jsclient/loader0.js",name:"olark",methods:["configure","extend","declare","identify"]});
+/* custom configuration goes here (www.olark.com/documentation) */
+olark.identify('3667-651-10-8161');/*]]>*/</script><noscript><a href="https://www.olark.com/site/3667-651-10-8161/contact" title="Contact us" target="_blank">Questions? Feedback?</a> powered by <a href="http://www.olark.com?welcome" title="Olark live chat software">Olark live chat software</a></noscript>
+<!-- end olark code -->
+    <!-- Google Code for orcamento Conversion Page -->
+</body>
+</html>

@@ -1,0 +1,178 @@
+<style type="text/css">
+  .popover-content,
+  .popover-title {
+    color: #000
+  }
+  
+  #head {
+    padding-top: 80px;
+  }
+  
+  .toggle .handle {
+    top: 0;
+  }
+  
+  .tp_10 {
+    margin-top: 10px;
+  }
+</style>
+<div class="top-space" style="padding-top: 30px">
+  <div class="row bs-wizard hidden-xs hidden-sm" style="border-bottom: 0;">
+    <div class="col-xs-4 bs-wizard-step complete">
+      <div class="text-center bs-wizard-stepnum">Dados do Veículo e serviço</div>
+      <div class="progress">
+        <div class="progress-bar"></div>
+      </div>
+      <a class="bs-wizard-dot"></a>
+    </div>
+    <div class="col-xs-4 bs-wizard-step complete">
+      <div class="text-center bs-wizard-stepnum">Detalhes do Agendamento
+      </div>
+      <div class="progress">
+        <div class="progress-bar"></div>
+      </div>
+      <a class="bs-wizard-dot"></a>
+    </div>
+    <div class="col-xs-4 bs-wizard-step disabled">
+      <div class="text-center bs-wizard-stepnum">Finalizar Pedido</div>
+      <div class="progress">
+        <div class="progress-bar"></div>
+      </div>
+      <a class="bs-wizard-dot"></a>
+    </div>
+  </div>
+</div>
+    <div class="row well">
+      <div class="col-md-12">
+        <h6 class="" style="">
+           Dados pessoais
+        </h6>
+      </div>
+      <div class="col-md-12">
+        <div class="form-group text-left" style="">
+          <h6 style="">Nome*</h6>
+          <div>
+            <input type="text" class="form-control" id="inputNome" data-error="Preencha o nome corretamente" required name="nome" placeholder="Informe seu nome"
+              style="" title="Informe seu nome">
+            <div class="help-block with-errors"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group text-left" style="">
+          <h6 style="">Email*</h6>
+          <div>
+            <input type="email" class="form-control" id="inputEmail" name="email" data-error="Preencha o email corretamente" required
+              placeholder="Informe seu email" style="" title="Informe seu email">
+            <div class="help-block with-errors"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group text-left" style="">
+          <h6 style="">Telefone Celular*</h6>
+          <div>
+            <input type="text" class="form-control input-group-lg" id="inputTel" name="tel" placeholder="Informe seu telefone" style=""
+              title="Informe seu telefone" maxlength="15" data-error="Preencha o telefone corretamente" required>
+            <div class="help-block with-errors"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+     <div class="row well">
+      <div class="col-md-12">
+        <h6 class="" style="">
+           Sua localização
+        </h6>
+      </div>
+      <div class="col-md-2">
+        <div class="form-group text-left" style="">
+          <h6 style="">CEP*</h6>
+          <div>
+            <input type="text" class="form-control input-group-lg" id="inputTel" name="tel" placeholder="Informe seu CEP" style=""
+              title="Informe seu CEP" maxlength="15" data-error="Preencha o CEP corretamente" required>
+            <div class="help-block with-errors"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group text-left" style="">
+          <h6 style="">Endereço*</h6>
+          <div>
+            <input type="text" class="form-control" id="inputNome" data-error="" required name="nome" placeholder="Informe seu endereço"
+              style="" title="Informe seu endereço">
+            <div class="help-block with-errors"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="form-group text-left" style="">
+          <h6 style="">Numero*</h6>
+          <div>
+            <input type="text" class="form-control" id="numero" name="numero" data-error="" required
+              placeholder="Informe o numero" style="" title="">
+            <div class="help-block with-errors"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="form-group text-left" style="">
+          <h6 style="">Complemento*</h6>
+          <div>
+            <input type="text" class="form-control input-group-lg" id="complemento" name="complemento" placeholder="Informe o complemento" style=""
+              title="Informe o complemento" maxlength="15" data-error="" required>
+            <div class="help-block with-errors"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+ 
+ <div class="row well">
+      <div class="col-md-12">
+        <h6 class="" style="">
+           Parceiros
+        </h6>
+      </div>
+      <div class="col-md-2">
+        <div class="form-group text-left" style="">
+          <h6 style="">CEP*</h6>
+          <div>
+            <input type="text" class="form-control input-group-lg" id="inputTel" name="tel" placeholder="Informe seu CEP" style=""
+              title="Informe seu CEP" maxlength="15" data-error="Preencha o CEP corretamente" required>
+            <div class="help-block with-errors"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group text-left" style="">
+          <h6 style="">Endereço*</h6>
+          <div>
+            <input type="text" class="form-control" id="inputNome" data-error="" required name="nome" placeholder="Informe seu endereço"
+              style="" title="Informe seu endereço">
+            <div class="help-block with-errors"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="form-group text-left" style="">
+          <h6 style="">Numero*</h6>
+          <div>
+            <input type="text" class="form-control" id="numero" name="numero" data-error="" required
+              placeholder="Informe o numero" style="" title="">
+            <div class="help-block with-errors"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="form-group text-left" style="">
+          <h6 style="">Complemento*</h6>
+          <div>
+            <input type="text" class="form-control input-group-lg" id="complemento" name="complemento" placeholder="Informe o complemento" style=""
+              title="Informe o complemento" maxlength="15" data-error="" required>
+            <div class="help-block with-errors"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+ 

@@ -1,0 +1,318 @@
+
+
+.bs-wizard {margin-top: 0px;}
+
+/*Form Wizard*/
+.bs-wizard {border-bottom: solid 1px #e0e0e0; padding: 0 0 10px 0;}
+.bs-wizard > .bs-wizard-step {padding: 0; position: relative;}
+.bs-wizard > .bs-wizard-step + .bs-wizard-step {}
+.bs-wizard > .bs-wizard-step .bs-wizard-stepnum {color: #2687e9; font-size: 16px; margin-bottom: 5px; font-weight: 700;}
+.bs-wizard > .bs-wizard-step .bs-wizard-info {color: #999; font-size: 14px;}
+.bs-wizard > .bs-wizard-step > .bs-wizard-dot {position: absolute; width: 30px; height: 30px; display: block; background: #86BFF9; top: 45px; left: 50%; margin-top: -15px; margin-left: -15px; border-radius: 50%;} 
+.bs-wizard > .bs-wizard-step > .bs-wizard-dot-compete {position: absolute; width: 30px; height: 30px; display: block; background: #5cb85c; top: 45px; left: 50%; margin-top: -15px; margin-left: -15px; border-radius: 50%;} 
+.bs-wizard > .bs-wizard-step > .bs-wizard-dot-compete:after {content: ' '; width: 14px; height: 14px; background: #FFFFFF; border-radius: 50px; position: absolute; top: 8px; left: 8px; } 
+.bs-wizard > .bs-wizard-step > .bs-wizard-dot:after {content: ' '; width: 14px; height: 14px; background: #2687E9; border-radius: 50px; position: absolute; top: 8px; left: 8px; } 
+.bs-wizard > .bs-wizard-step > .progress {position: relative; border-radius: 0px; height: 8px; box-shadow: none; margin: 20px 0;}
+.bs-wizard > .bs-wizard-step > .progress > .progress-bar {width:0px; box-shadow: none; background: #86BFF9;}
+.bs-wizard > .bs-wizard-step.complete > .progress > .progress-bar {width:100%;}
+.bs-wizard > .bs-wizard-step.active > .progress > .progress-bar {width:50%;}
+.bs-wizard > .bs-wizard-step:first-child.active > .progress > .progress-bar {width:0%;}
+.bs-wizard > .bs-wizard-step:last-child.active > .progress > .progress-bar {width: 100%;}
+.bs-wizard > .bs-wizard-step.disabled > .bs-wizard-dot {background-color: #f5f5f5;}
+.bs-wizard > .bs-wizard-step.disabled > .bs-wizard-dot:after {opacity: 0;}
+.bs-wizard > .bs-wizard-step:first-child  > .progress {left: 50%; width: 50%;}
+.bs-wizard > .bs-wizard-step:last-child  > .progress {width: 50%;}
+.bs-wizard > .bs-wizard-step.disabled a.bs-wizard-dot{ pointer-events: none; }
+/*END Form Wizard*/
+
+
+/*Detalhes do orÃ§amento*/
+.profile 
+{
+ /* min-height: 355px; */
+ display: inline-block;
+}
+figcaption.ratings
+{
+    margin-top:0px;
+}
+figcaption.ratings a
+{
+    color:#f1c40f;
+    font-size:20px;
+}
+figcaption.ratings a:hover
+{
+    color:#f39c12;
+    text-decoration:none;
+}
+.divider 
+{
+    border-top:1px solid rgba(0,0,0,0.1);
+}
+.emphasis 
+{
+    border-top: 4px solid transparent;
+}
+.emphasis:hover 
+{
+    border-top: 4px solid #1abc9c;
+}
+.emphasis h2
+{
+    margin-bottom:0;
+}
+span.tags 
+{
+    background: #1abc9c;
+    border-radius: 2px;
+    color: #f5f5f5;
+    font-weight: bold;
+    padding: 2px 4px;
+}
+.dropdown-menu 
+{
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    width: 250px;
+    margin-left: -125px;
+    left: 50%;
+}
+.dropdown-menu .divider 
+{
+    background:none;    
+}
+.dropdown-menu>li>a
+{
+    color:#f5f5f5;
+}
+.dropup .dropdown-menu 
+{
+    margin-bottom:10px;
+}
+.dropup .dropdown-menu:before 
+{
+    content: "";
+    border-top: 10px solid #34495e;
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    margin-left: -10px;
+    z-index: 10;
+}
+
+
+/* IUGU STYLE*/
+
+
+.popover-content,.popover-title {
+	color: #000
+}
+
+#head {
+	padding-top: 80px;
+}
+
+.escolha{
+	cursor: pointer;
+}
+
+.escolha{
+	color: #5bc0de;
+	text-decoration: none;
+	background-color: #f5f5f5;
+}
+
+.escolha:hover, .escolha-active{
+	background-color: #5bc0de;
+	color: #FFFFFF;
+}
+
+/* Credit Card Form */
+.usable-creditcard-form, .usable-creditcard-form * {
+    font-size: 13px;
+}
+.usable-creditcard-form {
+    position: relative;
+    padding: 0px;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.usable-creditcard-form .wrapper {
+    border: 1px solid #CCC;
+    border-top: 1px solid #AAA;
+    border-right: 1px solid #AAA;
+    height: 74px;
+    width: 300px;
+    position: relative;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+.usable-creditcard-form .input-group {
+    position: absolute;
+    top: 300px;
+}
+.usable-creditcard-form .input-group.nmb_a {
+    position: absolute;
+    width: 200px;
+    top: 0px;
+    left: 0px;
+}
+.usable-creditcard-form .input-group.nmb_b {
+    position: absolute;
+    width: 100px;
+    top: 0px;
+    right: 0px;
+}
+.usable-creditcard-form .input-group.nmb_b input,
+.usable-creditcard-form .input-group.nmb_d input {
+    text-align: center;
+}
+.usable-creditcard-form .input-group.nmb_c {
+    position: absolute;
+    width: 200px;
+    top: 37px;
+    left: 0px;
+}
+.usable-creditcard-form .input-group.nmb_d {
+    position: absolute;
+    width: 100px;
+    top: 37px;
+    right: 0px;
+}
+.usable-creditcard-form input {
+    background: none;
+    display: block;
+    width: 100%;
+    padding: 10px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin:0px;
+    padding-left: 35px;
+    border: none;
+}
+.usable-creditcard-form .input-group .icon {
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    background: #CCC;
+    left: 8px;
+    top: 7px;
+}
+.usable-creditcard-form .input-group.nmb_a input {
+    border-right: 1px solid #ECECEC;
+}
+.usable-creditcard-form .input-group.nmb_c input {
+    border-top: 1px solid #ECECEC;
+    border-right: 1px solid #ECECEC;
+}
+
+.usable-creditcard-form input::-webkit-input-placeholder {
+    font-size: 12px;
+    text-transform: none;
+}
+.usable-creditcard-form .input-group.nmb_d input {
+    border-top: 1px solid #ECECEC;
+}
+
+.usable-creditcard-form .input-group.nmb_c input {
+    text-transform: uppercase;
+}
+.usable-creditcard-form .accept {
+    color: #999;
+    font-size: 11px;
+    margin-bottom: 5px;
+}
+.usable-creditcard-form .footer {
+    margin-top: 3px;
+    position: relative;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.usable-creditcard-form .footer img {
+    padding: 0px;
+    margin: 0px;
+}
+.usable-creditcard-form .iugu-btn {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
+/* Do not forget to store your images in a secure server */
+.usable-creditcard-form .input-group .icon.ccic-name {
+    background: url("http://storage.pupui.com.br/9CA0F40E971643D1B7C8DE46BBC18396/assets/ccic-name.1cafa1882fdd56f8425de54a5a5bbd1e.png") no-repeat;
+}
+.usable-creditcard-form .input-group .icon.ccic-exp {
+    background: url("http://storage.pupui.com.br/9CA0F40E971643D1B7C8DE46BBC18396/assets/ccic-exp.05e708b1489d5e00c871f20ba33bbff3.png") no-repeat;
+}
+.usable-creditcard-form .input-group .icon.ccic-brand {
+    background: url("http://storage.pupui.com.br/9CA0F40E971643D1B7C8DE46BBC18396/assets/ccic-brands.48dba03883007f86e118f683dcfc4297.png") no-repeat;
+}
+.usable-creditcard-form .input-group .icon.ccic-cvv { background: url("http://storage.pupui.com.br/9CA0F40E971643D1B7C8DE46BBC18396/assets/ccic-cvv.1fe78dcc390427094bdc14dedea10f34.png") no-repeat; }
+
+.usable-creditcard-form .input-group .icon.ccic-cvv,
+.usable-creditcard-form .input-group .icon.ccic-brand
+{
+    -webkit-transition:background-position .2s ease-in;
+    -moz-transition:background-position .2s ease-in;
+    -o-transition:background-position .2s ease-in;
+    transition:background-position .2s ease-in;
+}
+
+.amex .usable-creditcard-form .input-group .icon.ccic-cvv {
+    background-position: 0px -22px;
+}
+
+.amex .usable-creditcard-form .input-group .icon.ccic-brand {
+    background-position: 0px -110px;
+}
+
+.visa .usable-creditcard-form .input-group .icon.ccic-brand {
+    background-position: 0px -22px;
+}
+
+.diners .usable-creditcard-form .input-group .icon.ccic-brand {
+    background-position: 0px -88px;
+}
+
+.mastercard .usable-creditcard-form .input-group .icon.ccic-brand {
+    background-position: 0px -66px;
+}
+
+/* Non Credit Card Form - Token Area */
+.token-area {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 1px dotted #CCC;
+    display: block;
+    padding: 20px;
+    background: #EFEFEF;
+}
+
+
+.footer1 a {
+    color: #FFF !important;
+    text-decoration: underline !important;
+}
+
+.footer1 a:hover {
+    color: #FDD72F !important;
+    text-decoration: underline !important;
+}
+
+
+/* Estilo especifico para o cabelho dos paineis*/
+.panel-default>.panel-heading {
+    color: #FDD72F;
+    background-color:#2687e9;
+    border-color: #ddd;
+    font-weight: bold;
+}
+
+.mgt10{margin-top: 10px;}

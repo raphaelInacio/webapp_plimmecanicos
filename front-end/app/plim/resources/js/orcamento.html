@@ -1,0 +1,436 @@
+<html>
+<head>
+<title>Plim Mecânicos, Serviços Mecânicos a Domicílio</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="" />
+<meta name="author" content="R.I. Serviços Digitais" />
+
+<link rel="shortcut icon" href="resources/images/gt_favicon.png" />
+
+<link rel="stylesheet" type="text/css"
+	href="resources/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css"
+	href="resources/css/font-awesome.min.css" />
+	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+<link rel="stylesheet" media="screen"
+	href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700" />
+
+<!-- Custom styles for our template -->
+<link rel="stylesheet" type="text/css"
+	href="resources/css/bootstrap-theme.css" />
+<link rel="stylesheet" type="text/css" href="resources/css/main.css" />
+
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+	<script src="js/html5shiv.js"></script>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+
+<style type="text/css">
+.popover-content,.popover-title {
+	color: #000
+}
+
+#head {
+	padding-top: 80px;
+}
+
+.escolha{
+	cursor: pointer;
+}
+
+.escolha{
+	color: #5bc0de;
+	text-decoration: none;
+	background-color: #f5f5f5;
+}
+
+.escolha:hover, .escolha-active{
+	background-color: #5bc0de;
+	color: #FFFFFF;
+}
+
+</style>
+
+</head>
+<body onload="obterEnderecoRequest()">
+	<!-- Fixed navbar -->
+	<div class="navbar navbar-inverse navbar-fixed-top headroom"
+		style="background: #019AA2">
+		<div class="container">
+			<div class="navbar-header">
+				<!-- Button for smallest screens -->
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-collapse">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="index.html"><img
+					src="resources/images/logo-2.png" alt="Plim Mecânicos" /></a>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav pull-right">
+					<!--	<li><a href="orcamento.html" class="btn">Solicite um orçamento?</a></li> -->
+					<li><h5 class="widget-title"
+							style="color: white; font-size: 15px; padding-top: 5px;">
+							Fale Conosco : (11) 2018-1788 <br>
+						</h5></li>
+
+				</ul>
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+	</div>
+	<!-- /.navbar -->
+	<!-- Highlights - jumbotron -->
+	<div class="top-space" style="padding-top:30px">
+		<div class="container">
+			<h2 class="text-left thin" style="color: #019AA2;">Solicitação de Orçamento Mecânico</h2>
+			<div class="row highlight">
+				<div class="col-md-8 col-sm-6">
+					<form class="form-inline" role="form" action="enviar-orcamento.php" method="post" name="form">
+
+					<!-- HIDEN-->
+					<input type="hidden" name="tipo" value="Orcamento Mecanico">	
+						<input type="hidden" name="endereco" id="hidden_endereco">
+						<input type="hidden" name="bairro"   id="hidden_bairro">
+						<input type="hidden" name="cidade" id="hidden_cidade">
+						<input type="hidden" name="estado" id="hidden_estado">
+						<input type="hidden" name="veiculo" id="hidden_estado">
+
+							<div class="row">
+								<div class="col-xs-12">
+								<div class="text-left" style="width: 100%;">
+									<h4 class="thin" style=" color: #019AA2">Qual o seu tipo de veículo?</h4>
+									<div class="col-xs-12 col-md-4 text-center">
+										<div  id="carro" class="well well-lg escolha"><i class="fa fa-car fa-5x"></i> <br>Eu Tenho um<br> Carro</div>
+									</div>
+									<div class="col-xs-12 col-md-4 text-center">
+										<div id="caminhao" class="well well-lg escolha"><i class="fa fa-truck fa-5x"></i><br>Eu Tenho um<br> Caminhão</div>
+									</div>
+									<div class="col-xs-12 col-md-4 text-center">
+										<div id="moto" class="well well-lg escolha"><i class="fa fa-bicycle fa-5x"></i><br>Eu Tenho uma<br> Moto</div>
+									</div>
+								</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-6 col-md-4">
+									<div class="form-group text-left" style="width: 100%;">
+										<h4 class="thin" style=" color: #019AA2">Montadora</h4>
+										<div>
+											<input type="text" class="form-control" id="montadora"
+												name="montadora" placeholder="Ex.: Fiat, WV, Ford, Yamaha, Honda.."
+												style="height: 45px; width: 100%" required=""
+												title="Informe a montadora" onChange="preencherPedido();">
+										</div>
+									</div>
+								</div>
+
+								<div class="col-xs-6 col-md-4">
+									<div class="form-group text-left" style="width: 100%;">
+										<h4 class="thin" style=" color: #019AA2">Veículo</h4>
+										<div>
+											<input type="text" class="form-control" id="veiculo"
+												name="veiculo" placeholder="Ex.: Gol, Pálio, CG 150..."
+												style="height: 45px; width: 100%" required=""
+												title="Informe o veículo" onChange="preencherPedido();">
+										</div>
+									</div>
+								</div>
+								<div class="col-xs-6 col-md-4">
+									<div class="form-group text-left" style="width: 100%;">
+										<h4 class="thin" style=" color: #019AA2">Ano</h4>
+										<div>
+											<input type="text" class="form-control" id="ano"
+												name="ano" placeholder="Ex.: 2000, 2001, 2008, 20014..."
+												style="height: 45px; width: 100%" required=""
+												title="Informe o ano" onChange="preencherPedido();">
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- Columns are always 50% wide, on mobile and desktop -->
+							<div class="row">
+								<div class="col-xs-12">
+									<div class="text-left" style="width: 100%;">
+										<h4 class="thin" style=" color: #019AA2">Qual o seu problema</h4>
+										<div>
+											<textarea onChange="preencherPedido();" class="form-control" rows="3" name="detalhes" id="detalhes" style="width: 100%;" placeholder="Insira algumas informações sobre o problema.
+Ex. O carro não da partida, a luz do painel não esta acendendo, não sei o problema preciso de uma avaliação
+"></textarea>
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+
+							<!-- Columns are always 50% wide, on mobile and desktop -->
+							<div class="row">
+								<div class="col-xs-4">
+									<div class="form-group text-left" style="width: 100%;">
+										<h4 class="thin" style=" color: #019AA2">Nome</h4>
+										<div>
+											<input type="nome" class="form-control" id="nome"
+												name="nome" placeholder="Informe seu E-mail"
+												style="height: 45px; width: 100%" required=""
+												title="Informe seu nome" onChange="preencherPedido();">
+										</div>
+									</div>
+								</div>
+								<div class="col-xs-4">
+									<div class="form-group text-left" style="width: 100%;">
+										<h4 class="thin" style=" color: #019AA2">Email</h4>
+										<div>
+											<input required="" type="email" class="form-control" id="email"
+												name="email" placeholder="Informe seu email"
+												style="height: 45px; width: 100%" required=""
+												title="Informe seu numero email" maxlength="15" onChange="preencherPedido();">
+										</div>
+									</div>
+								</div>
+								<div class="col-xs-4">
+									<div class="form-group text-left" style="width: 100%;">
+										<h4 class="thin" style=" color: #019AA2">Telefone</h4>
+										<div>
+											<input required="" type="tel" class="form-control" id="tel"
+												name="tel" placeholder="Informe seu email"
+												style="height: 45px; width: 100%" required=""
+												title="Informe seu numero telefone" maxlength="15" onChange="preencherPedido();">
+										</div>
+									</div>
+								</div>
+
+							</div>
+							<!-- Columns are always 50% wide, on mobile and desktop -->
+							<div class="row">
+								<div class="col-xs-12" style="padding-top: 30px;">
+									<div class="form-group text-center" style="width: 100%;">
+										<div>
+											<button type="submit" onclick="return calcularHora();"
+												class="form-inline btn btn-success text-left"
+												style="width: 100%; height: 45px">ENVIAR
+												ORÇAMENTO</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</form>
+						<div class="text-center">
+							<p> </p>
+						</div>
+				</div>
+				<div class="col-md-4 col-sm-6 highlight">
+					<div class="well">
+							<h4  class="page-header">
+								Dados do Pedido
+							</h4>
+							<p><strong>Tipo de veículo:</strong><span class="pull-right pedido_tipo_veiculo"></span></p>
+							<p><strong>Montadora:</strong> <span class="pull-right pedido_montadora" ></span></p>
+							<p><strong>Veículo:</strong> <span class="pull-right pedido_veiculo"></span></p>
+							<p><strong>Ano:</strong> <span class="pull-right pedido_ano"></span></p>
+							<p><strong>Problema:</strong> <span class="pull-right pedido_detalhes"></span></p>
+							<h4 class="page-header">
+								Dados Pessoais
+							</h4>
+							<p><strong>Nome:</strong><span class="pull-right pedido_nome"></span></p>
+							<p><strong>Email:</strong> <span class="pull-right pedido_email"></span></p>
+							<p><strong>Telefone:</strong> <span class="pull-right pedido_telefone"></span></p>
+							<p><strong>Endereço:</strong> <span class="pull-right pedido_endereco"></span></p>
+							<p><strong>Bairro:</strong> <span class="pull-right pedido_bairro"></span></p>
+							<p><strong>Cidade:</strong> <span class="pull-right pedido_cidade"></span></p>
+					</div>
+				</div>
+			<!-- /row  -->
+
+			
+	</div></div>
+	<!-- container -->
+	<!-- Fim Conteudo -->
+	<!--Footer  -->
+	<div id="footer">
+		<div class="footer1" style="background-color: #019AA2; color: white;">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-3 widget">
+						<h3 class="widget-title">Alguma dúvida?</h3>
+						<div class="widget-body">
+							<p>
+								(11) 2018-1788<br /> <a
+									href="mailto:contato@plimmecanicos.com.br">contato@plimmecanicos.com.br</a><br />
+							</p>
+						</div>
+					</div>
+					<div class="col-md-6 widget"></div>
+				</div>
+				<!-- /row of widgets -->
+			</div>
+		</div>
+		<div class="footer2">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6 widget">
+						<div class="widget-body"></div>
+					</div>
+					<div class="col-md-6 widget">
+						<div class="widget-body">
+							<p class="text-right">
+								Copyright &copy; 2014, Plim Mecânicos. Designed by <a
+									href="http://riservicosdigitais.com.br/" rel="designer">R.I.
+									Serviços Digitais</a>
+							</p>
+						</div>
+					</div>
+				</div>
+				<!-- /row of widgets -->
+			</div>
+		</div>
+	</div>
+	<!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+	<script
+		src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script
+		src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+	<script src="resources/js/headroom.min.js"></script>
+	<script src="resources/js/jQuery.headroom.min.js"></script>
+	<script src="resources/js/template.js"></script>
+	<!-- begin olark code -->
+	<script data-cfasync="false" type='text/javascript'>
+		/*<![CDATA[*/window.olark
+				|| (function(c) {
+					var f = window, d = document, l = f.location.protocol == "https:" ? "https:"
+							: "http:", z = c.name, r = "load";
+					var nt = function() {
+						f[z] = function() {
+							(a.s = a.s || []).push(arguments)
+						};
+						var a = f[z]._ = {}, q = c.methods.length;
+						while (q--) {
+							(function(n) {
+								f[z][n] = function() {
+									f[z]("call", n, arguments)
+								}
+							})(c.methods[q])
+						}
+						a.l = c.loader;
+						a.i = nt;
+						a.p = {
+							0 : +new Date
+						};
+						a.P = function(u) {
+							a.p[u] = new Date - a.p[0]
+						};
+						function s() {
+							a.P(r);
+							f[z](r)
+						}
+						f.addEventListener ? f.addEventListener(r, s, false)
+								: f.attachEvent("on" + r, s);
+						var ld = function() {
+							function p(hd) {
+								hd = "head";
+								return [ "<",hd,"></",hd,"><", i,
+										' onl' + 'oad="var d=', g,
+										";d.getElementsByTagName('head')[0].",
+										j, "(d.", h, "('script')).", k, "='",
+										l, "//", a.l, "'", '"', "></",i,">" ]
+										.join("")
+							}
+							var i = "body", m = d[i];
+							if (!m) {
+								return setTimeout(ld, 100)
+							}
+							a.P(1);
+							var j = "appendChild", h = "createElement", k = "src", n = d[h]
+									("div"), v = n[j](d[h](z)), b = d[h]
+									("iframe"), g = "document", e = "domain", o;
+							n.style.display = "none";
+							m.insertBefore(n, m.firstChild).id = z;
+							b.frameBorder = "0";
+							b.id = z + "-loader";
+							if (/MSIE[ ]+6/.test(navigator.userAgent)) {
+								b.src = "javascript:false"
+							}
+							b.allowTransparency = "true";
+							v[j](b);
+							try {
+								b.contentWindow[g].open()
+							} catch (w) {
+								c[e] = d[e];
+								o = "javascript:var d=" + g
+										+ ".open();d.domain='" + d.domain
+										+ "';";
+								b[k] = o + "void(0);"
+							}
+							try {
+								var t = b.contentWindow[g];
+								t.write(p());
+								t.close()
+							} catch (x) {
+								b[k] = o
+										+ 'd.write("'
+										+ p().replace(/"/g,
+												String.fromCharCode(92) + '"')
+										+ '");d.close();'
+							}
+							a.P(2)
+						};
+						ld()
+					};
+					nt()
+				})({
+					loader : "static.olark.com/jsclient/loader0.js",
+					name : "olark",
+					methods : [ "configure", "extend", "declare", "identify" ]
+				});
+		/* custom configuration goes here (www.olark.com/documentation) */
+		olark.identify('3667-651-10-8161');/*]]>*/
+	</script>
+	<noscript>
+		<a href="https://www.olark.com/site/3667-651-10-8161/contact"
+			title="Contact us" target="_blank">Questions? Feedback?</a> powered
+		by <a href="http://www.olark.com?welcome"
+			title="Olark live chat software">Olark live chat software</a>
+	</noscript>
+	<!-- end olark code -->
+	<!-- Start Analytics -->
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-55550849-1', 'auto');
+	  ga('send', 'pageview');
+
+	</script>
+	<!-- End Analytics -->
+
+
+	<!-- Google Code for orcamento Conversion Page -->
+	<script type="text/javascript">
+	/* <![CDATA[ */
+	var google_conversion_id = 961865189;
+	var google_conversion_language = "en";
+	var google_conversion_format = "3";
+	var google_conversion_color = "ffffff";
+	var google_conversion_label = "qp4qCIzg2lYQ5cvTygM";
+	var google_conversion_value = 1.00;
+	var google_conversion_currency = "BRL";
+	var google_remarketing_only = false;
+	/* ]]> */
+	</script>
+	<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+	</script>
+	<noscript>
+	<div style="display:inline;">
+	<img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/961865189/?value=1.00&amp;currency_code=BRL&amp;label=qp4qCIzg2lYQ5cvTygM&amp;guid=ON&amp;script=0"/>
+	</div>
+	</noscript>
+	<!-- Google Code for orcamento Conversion Page -->
+	</body>
+</html>

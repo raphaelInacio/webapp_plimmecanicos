@@ -1,0 +1,268 @@
+  <style type="text/css">
+    .popover-content,
+    .popover-title {
+      color: #000
+    }
+    
+    #head {
+      padding-top: 80px;
+    }
+    
+    .toggle .handle {
+      top: 0;
+    }
+    
+    .tp_10 {
+      margin-top: 10px;
+    }
+  </style>
+  <div class="top-space" style="padding-top: 30px">
+    <div class="col-md-12 col-sm-12">
+      <div class="row well" data-ng-show="vm.show.veiculo">
+        <div class="col-xs-12">
+          <div class="col-md-12">
+            <h6 class="" style="">
+              <strong> Dados do veículo </strong>
+            </h6>
+          </div>
+          <div class="col-md-12">
+            <h5 class="" style="">
+              <span class="label badge-primary">{{vm.veiculo.montadora}}</span>
+              <span class="label badge-primary">{{vm.veiculo.modelo}}</span>
+              <span class="label badge-primary">{{vm.veiculo.ano}}</span>
+            </h5>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 col-md-4">
+            </div>
+          </div>
+          <div class="col-md-12" data-ng-show="vm.show.montadora">
+            <div class="list-group">
+              <a class="list-group-item ">
+                <div class="form-search search-only">
+                  <i class="search-icon glyphicon glyphicon-search"></i>
+                  <input type="text" class="form-control search-query" ng-model="searchMontadora" id="search" placeholder="Selecione a montadora do veículo">
+                </div>
+              </a>
+              <a data-ng-click="vm.buscarModelos(montadora); " data-ng-repeat="montadora in vm.montadoras  | filter:searchMontadora " class="list-group-item">{{montadora.nome}}</a>
+            </div>
+          </div>
+          <div class="col-md-12" data-ng-show="vm.show.modelo">
+            <div class="list-group">
+              <a class="list-group-item ">
+                Montadora
+              </a>
+              <a class="list-group-item">
+                <div class="form-search search-only">
+                  <i class="search-icon glyphicon glyphicon-search"></i>
+                  <input type="text" class="form-control search-query" ng-model="searchModelos" id="search" placeholder="Selecione o modelo do veículo">
+                </div>
+              </a>
+              <a data-ng-click="vm.buscarAno(modelo)" data-ng-repeat="modelo in vm.modelos  | filter:searchModelos " class="list-group-item">{{modelo.nome}}</a>
+            </div>
+          </div>
+          <div class="col-md-12" data-ng-show="vm.show.ano">
+            <div class="list-group">
+              <a class="list-group-item ">
+                <div class="form-search search-only">
+                  <i class="search-icon glyphicon glyphicon-search"></i>
+                  <input type="text" class="form-control search-query" ng-model="searchAnos" id="search" placeholder="Selecione o ano do veículo">
+                </div>
+              </a>
+              <a data-ng-click="vm.selecionarAno(ano)" data-ng-repeat="ano in vm.anos  | filter:searchAnos " class="list-group-item">{{ano.nome}}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row well" data-ng-show="vm.show.servicos">
+        <div class="col-xs-12">
+          <h6 class="" style="">
+            <strong> Dados do serviço </strong>
+          </h6>
+        </div>
+        <div class="col-md-12">
+          <h5 class="" style="">
+            <span class="label badge-primary">{{vm.servico.servico}}</span>
+            <span class="label badge-primary">{{vm.servico.preco}}</span>
+            <span class="label badge-primary">{{vm.servico.detalhes}}</span>
+            <span class="label badge-primary">{{vm.servico.pecas}}</span>
+          </h5>
+        </div>
+        <div class="col-md-12" data-ng-show="vm.show.filterServico">
+          <div class="list-group">
+            <a class="list-group-item ">
+              <div class="form-search search-only">
+                <i class="search-icon glyphicon glyphicon-search"></i>
+                <input type="text" class="form-control search-query" ng-model="searchServicos" id="search" placeholder="Serviços">
+              </div>
+            </a>
+            <a data-ng-click="vm.selecionarSevico(servico)" data-ng-repeat='servico in vm.servicos | filter:searchServicos' class="list-group-item"><span class="badge badge-success">{{servico.preco}}</span>{{servico.servico}}</a>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <h6 style="">Insira detalhes sobre o serviço que deseja fazer, caso não saiba o problema informe o que esta acontecendo com o
+            carro que entraremos em contato*
+          </h6>
+          <div class="text-left" style="">
+            <div class="">
+              <textarea class="form-control" data-error="Informe os detalhes do serviço que deseja realizar" required rows="3" name="detalhes"
+                id="inputDetalhes" style="" placeholder="Ex. O carro não da partida, quero fazer a troca de óleo, não sei o problema preciso de uma avaliação, motor esta engasgando, sinto um leve trepidação quando estou dirigindo e etc.."
+                title="Informe o problema do seu carro" data-ng-model='vm.servico.detalhes'></textarea>
+              <div class="help-block with-errors"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <h6 style="">Incluir as peças no orçamento.</h6>
+          <div class="text-left" style="">
+            <div class="row">
+              <div class="col-md-6">
+                <h6 style="">{{vm.servico.pecas}}</h6>
+                <label class="toggle">
+                      <input type="checkbox" data-ng-model='vm.servico.pecas' ng-true-value="'Sim, incluir as peças no orçamento'" 
+                      ng-false-value="'Não, incluir as peças no orçamento'">
+                      <span class="handle"></span>
+                    </label>
+              </div>
+            </div>
+            <div class="help-block with-errors"></div>
+          </div>
+        </div>
+
+      </div>
+      <div class="row well">
+        <div class="col-md-12">
+          <h6 class="" style="">
+            <strong> Dados pessoais</strong>
+          </h6>
+        </div>
+        <div class="col-md-12">
+          <div class="form-group text-left" style="">
+            <h6 style="">Nome*</h6>
+            <div>
+              <input type="text" class="form-control" id="inputNome" data-error="Preencha o nome corretamente" required name="nome" placeholder="Informe seu nome"
+                style="" title="Informe seu nome">
+              <div class="help-block with-errors"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group text-left" style="">
+            <h6 style="">Email*</h6>
+            <div>
+              <input type="email" class="form-control" id="inputEmail" name="email" data-error="Preencha o email corretamente" required
+                placeholder="Informe seu email" style="" title="Informe seu email">
+              <div class="help-block with-errors"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group text-left" style="">
+            <h6 style="">Telefone Celular*</h6>
+            <div>
+              <input type="text" class="form-control input-group-lg" id="inputTel" name="tel" placeholder="Informe seu telefone" style=""
+                title="Informe seu telefone" maxlength="15" data-error="Preencha o telefone corretamente" required>
+              <div class="help-block with-errors"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row well">
+        <div class="col-md-12">
+          <h6 class="" style="">
+            <strong> Sua localização</strong>
+          </h6>
+        </div>
+        <div class="col-md-2">
+          <div class="form-group text-left" style="">
+            <h6 style="">CEP*</h6>
+            <div>
+              <input type="text" class="form-control input-group-lg" id="inputTel" name="tel" placeholder="Informe seu CEP" style="" title="Informe seu CEP"
+                maxlength="15" data-error="Preencha o CEP corretamente" required>
+              <div class="help-block with-errors"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group text-left" style="">
+            <h6 style="">Endereço*</h6>
+            <div>
+              <input type="text" class="form-control" id="inputNome" data-error="" required name="nome" placeholder="Informe seu endereço"
+                style="" title="Informe seu endereço">
+              <div class="help-block with-errors"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="form-group text-left" style="">
+            <h6 style="">Numero*</h6>
+            <div>
+              <input type="text" class="form-control" id="numero" name="numero" data-error="" required placeholder="Informe o numero" style=""
+                title="">
+              <div class="help-block with-errors"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="form-group text-left" style="">
+            <h6 style="">Complemento*</h6>
+            <div>
+              <input type="text" class="form-control input-group-lg" id="complemento" name="complemento" placeholder="Informe o complemento"
+                style="" title="Informe o complemento" maxlength="15" data-error="" required>
+              <div class="help-block with-errors"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row well">
+        <div class="col-md-12">
+          <h6 class="" style="">
+            <strong> Parceiros</strong>
+          </h6>
+        </div>
+        <div class="col-md-2">
+          <div class="form-group text-left" style="">
+            <h6 style="">CEP*</h6>
+            <div>
+              <input type="text" class="form-control input-group-lg" id="inputTel" name="tel" placeholder="Informe seu CEP" style="" title="Informe seu CEP"
+                maxlength="15" data-error="Preencha o CEP corretamente" required>
+              <div class="help-block with-errors"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group text-left" style="">
+            <h6 style="">Endereço*</h6>
+            <div>
+              <input type="text" class="form-control" id="inputNome" data-error="" required name="nome" placeholder="Informe seu endereço"
+                style="" title="Informe seu endereço">
+              <div class="help-block with-errors"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="form-group text-left" style="">
+            <h6 style="">Numero*</h6>
+            <div>
+              <input type="text" class="form-control" id="numero" name="numero" data-error="" required placeholder="Informe o numero" style=""
+                title="">
+              <div class="help-block with-errors"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="form-group text-left" style="">
+            <h6 style="">Complemento*</h6>
+            <div>
+              <input type="text" class="form-control input-group-lg" id="complemento" name="complemento" placeholder="Informe o complemento"
+                style="" title="Informe o complemento" maxlength="15" data-error="" required>
+              <div class="help-block with-errors"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+         <div class="col-md-12">
+          <a ng-href="#/agendamento" class="btn  btn-lg btn-primary btn-block">Prosseguir</a>
+        </div>
+    </div>
+  </div>
