@@ -1,5 +1,42 @@
 
 
+
+body
+{
+        background-color: #FAFBFC;
+}
+
+.label{
+    font-size: large;
+}
+.search-only .search-icon{
+    top: 7px;
+}
+.titulo-pedido
+{
+    font-family: "proxima-nova",Avenir,"Helvetica-Neue","Helvetica","Arial",sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    color: #363946;
+}
+
+.strong{
+    font-family: "Montserrat", sans-serif;
+    font-weight: 900;
+}
+
+.input-lg{
+    font-size: 12px;
+}
+
+input[type="text"], .cd-form input[type="email"], .cd-form input[type="password"], .cd-form input[type="tel"], .cd-form textarea, .cd-form select {
+    padding: 12px;
+    border: 1px solid #dae1e9;
+    background-color: #fff;
+    border-radius: .25em;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.08);
+}
 .bs-wizard {margin-top: 0px;}
 
 /*Form Wizard*/
