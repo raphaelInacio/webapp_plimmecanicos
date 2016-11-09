@@ -172,15 +172,23 @@
       </div>
     </div>
     
-    <div class="row well">
+    <div class="row well scrool-well">
       <div class="col-md-12">
         <h3 class="titulo-pedido strong" style="">
            Parceiros próximos de você
         </h3>
       </div>
 
-      <div class="col-md-6">
-        <div class="well">Look, I'm in a well!</div>
+      <div class="col-md-6"  data-ng-repeat="parceiro in vm.parceiros">
+        <div class="well">
+        <h5>
+          {{parceiro.nome}}
+        </h5>
+        <p>{{parceiro.endereco}}, {{parceiro.bairro}}</p>
+        <p>{{parceiro.telefone}}</p>
+        <p>{{parceiro.email}}</p>
+        <p><a class="btn btn-primary">Selecionar</a></p>
+        </div>
       </div>
         
     </div>

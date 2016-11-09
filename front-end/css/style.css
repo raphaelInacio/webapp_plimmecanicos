@@ -6,6 +6,11 @@ body
         background-color: #FAFBFC;
 }
 
+.scrool-well{
+        overflow-y: scroll;
+    max-height: 400pt;
+}
+
 .label{
     font-size: large;
 }
