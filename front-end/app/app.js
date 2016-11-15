@@ -11,26 +11,29 @@ app.config(function($routeProvider)
    $routeProvider
  
    // para a rota '/', carregaremos o template home.html e o controller 'HomeCtrl'
-   .when('/test', {
-      templateUrl : 'app/home/home.html',
-      controller     : 'HomeController',
-      controllerAs : 'vm'
-   })
+//    .when('/test', {
+//       templateUrl : 'app/home/home.html',
+//       controller     : 'HomeController',
+//       controllerAs : 'vm'
+//    })
  
-   // para a rota '/sobre', carregaremos o template sobre.html e o controller 'SobreCtrl'
    .when('/', {
       templateUrl : 'app/pedido/pedido.html',
       controller  : 'PedidoController',
       controllerAs : 'vm' 
    })
 
-   // para a rota '/sobre', carregaremos o template sobre.html e o controller 'SobreCtrl'
-   .when('/agendamento', {
-      templateUrl : 'app/agendamento/agendamento.html',
-      controller  : 'AgendamentoController',
+   .when('/chat/:id', {
+      templateUrl : 'app/chat/chat.html',
+      controller  : 'ChatController',
       controllerAs : 'vm' 
    })
  
-   // caso não seja nenhum desses, redirecione para a rota '/'
+   .when('/chat', {
+      templateUrl : 'app/chat/chat.html',
+      controller  : 'ChatController',
+      controllerAs : 'vm' 
+   })
+
    .otherwise ({ redirectTo: '/' });
 });

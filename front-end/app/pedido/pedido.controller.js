@@ -1181,5 +1181,19 @@ vm.parceiros = [
             vm.show.filterServico = false
         }
 
+    vm.geolocate = function geolocate() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var geolocation = new google.maps.LatLng(
+          position.coords.latitude, position.coords.longitude);
+      var circle = new google.maps.Circle({
+        center: geolocation,
+        radius: position.coords.accuracy
+    });
+      autocomplete.setBounds(circle.getBounds());
+  });
+}
+}
+
     vm.buscarMontadoras()
 }

@@ -10,8 +10,13 @@
     "mecanicos",
     "marketplace",
     "oficina",
-    "startup"
+    "startup",
+    "chat"
   ],
+  "dependencies": {
+    "express": "4.10.2",
+    "socket.io": "1.2.0"
+  },
   "author": "Raphael Inacio",
   "license": "ISC"
 }

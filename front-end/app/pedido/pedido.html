@@ -16,7 +16,10 @@
     margin-top: 10px;
   }
 </style>
-<div class="top-space" style="padding-top: 30px"></div>
+<div class="mg-top-30"></div>
+<div class="container">
+
+
   <div class="col-md-12 col-sm-12 center-block">
     <div class="row well" data-ng-show="vm.show.veiculo">
       <div class="col-xs-12">
@@ -39,6 +42,7 @@
           </div>
         </div>
         <div class="col-md-12" data-ng-show="vm.show.montadora">
+          <div class="arrow"></div>
           <div class="list-group">
             <a data-ng-click="vm.buscarModelos(montadora); " data-ng-repeat="montadora in vm.montadoras  | filter:searchMontadora " class="list-group-item">{{montadora.nome}}</a>
           </div>
@@ -134,7 +138,7 @@
         <div class="form-group text-left" style="">
           <h6 class="strong">Endereço*</h6>
           <div>
-            <input type="text" class="form-control input-lg" id="inputNome" data-error="" required name="nome" placeholder="Informe seu endereço"
+            <input type="text" class="form-control input-lg" id="endereco" onfocus="geolocate()" data-error="" required name="nome" placeholder="Informe seu endereço"
               style="" title="Informe seu endereço">
             <div class="help-block with-errors"></div>
           </div>
@@ -172,9 +176,9 @@
       </div>
     </div>
     
-    <div class="row well scrool-well">
+    <div class="row">
       <div class="col-md-12">
-        <h3 class="titulo-pedido strong" style="">
+        <!--<h3 class="titulo-pedido strong" style="">
            Parceiros próximos de você
         </h3>
       </div>
@@ -190,8 +194,9 @@
         <p><a class="btn btn-primary">Selecionar</a></p>
         </div>
       </div>
-        
+        -->
     </div>
+      <a ng-href="#/chat" class="btn  btn-lg btn-primary btn-block mg-bottom-30">Inciar chat</a>
   </div>
-      <a ng-href="#/agendamento" class="btn  btn-lg btn-primary btn-block">Prosseguir</a>
 
+</div>
