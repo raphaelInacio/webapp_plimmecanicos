@@ -9,6 +9,12 @@ function ChatController($http) {
     vm.mensagem = ''
     vm.msgChat = ''
     vm.user = 'Raphael'
+    vm.data = {
+        id : '',
+        mensagem : '',
+        user : '',
+        dataMensagem : ''
+    }
     vm.obterDataMensagem = 
         function obterDataMensagem(){
             var data = new Date();
@@ -31,28 +37,49 @@ function ChatController($http) {
             var data =  str_data + ' ' + str_hora 
             return data
         }
+
     vm.enviarMensagem =
         function enviarMensagem() {
-            vm.socket.emit('chat message', vm.mensagem);
+            vm.data.mensagem = vm.mensagem
+            vm.data.dataMensagem = vm.obterDataMensagem()
+            vm.socket.emit('chat message', vm.data);
             vm.mensagem = ''
+            montarMensagemRementente(vm.data)
         }
 
-    vm.socket.on('chat message', function (msg) {
+    vm.socket.on('chat message', function (data) {
+        montarMensagemDestinatario(data)
+    });
 
-    $('#messages').append( '<dd class="pos-left clearfix">' +
+    function montarMensagemRementente(data){
+        $('#messages').append( '<dd class="pos-left clearfix">' +
         '<div class="circ"></div>' +
-        '<div class="time">'+ vm.obterDataMensagem() + '</div>' +
+        '<div class="time">'+ data.dataMensagem + '</div>' +
         '<div class="events">' +
             '<div class="pull-left">' +
                 '<img class="events-object img-rounded" src="http://bootflat.github.io/img/photo-2.jpg">' +
             '</div>' +
             '<div class="events-body">' +
-                '<h4 class="events-heading">'+ vm.user +'</h4>' +
-                '<p>'+ msg + '</p>' +
+                '<h4 class="events-heading">'+ data.user +'</h4>' +
+                '<p>'+ data.mensagem + '</p>' +
             '</div>' +
         '</div>' +
     '</dd>' );
+    }
 
-   
-    });
+    function montarMensagemDestinatario(data){
+        $('#messages').append( '<dd class="pos-right clearfix">' +
+            '<div class="circ"></div>' +
+            '<div class="time">'+ data.dataMensagem + '</div>' +
+            '<div class="events">' +
+                '<div class="pull-left">' +
+                    '<img class="events-object img-rounded" src="http://bootflat.github.io/img/photo-2.jpg">' +
+                '</div>' +
+                '<div class="events-body">' +
+                    '<h4 class="events-heading">'+ data.user +'</h4>' +
+                    '<p>'+ data.mensagem + '</p>' +
+                '</div>' +
+            '</div>' +
+        '</dd>' );
+    }
 }
