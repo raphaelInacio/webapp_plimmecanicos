@@ -1,13 +1,18 @@
 var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
+var users = 0
 
 app.get('/', function(req, res){
   res.sendfile('index.html');
 });
 
-io.on('connection', function(socket){
+dataChat = {}
 
+var dadosUsuario = {}
+var dadosVisitantes = {}
+
+io.on('connection', function(socket){
   socket.on('chat', function(data){
    io.emit('chat', data);
   });
@@ -26,6 +31,7 @@ io.on('connection', function(socket){
       io.emit('disconnect', data)
 		});
 });
+
 
 http.listen(3000, function(){
   console.log('listening on *:3000');

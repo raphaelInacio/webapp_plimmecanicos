@@ -7,7 +7,6 @@ function ChatController($http) {
     vm = this
     vm.socket = io('http://localhost:3000/');
     vm.mensagem = ''
-
     vm.obterDataMensagem =
         function obterDataMensagem() {
             var data = new Date().toISOString().split('T')[0].split('-').reverse().toString().replace(/,/g, '-')
@@ -61,11 +60,6 @@ function ChatController($http) {
         montarMensagemDestinatario(data)
     });
 
-    //socket.on('disconnect', function(data) {
-    //   montarMensagemDestinatario(data)
-    //});
-
-    //vm.socket.emit('disconnect', vm.data);
     vm.socket.emit('login', vm.data);
 
     function montarMensagemDestinatario(data) {
