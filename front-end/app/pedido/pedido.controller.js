@@ -3,7 +3,7 @@ angular
 .module('app')
 .controller('PedidoController', PedidoController);
 
-PedidoController.$inject = ['$http', 'PedidoService', 'ServicosFactory']
+PedidoController.$inject = ['$http', 'PedidoService' ,'ServicosFactory']
 
 function PedidoController($http, PedidoService, ServicosFactory) {
     var vm = this
@@ -32,37 +32,38 @@ function PedidoController($http, PedidoService, ServicosFactory) {
     vm.montadoras = []
     vm.modelos = []
     vm.anos = []
+    
     vm.buscarMontadoras =
         function buscarMontadoras() {
             // Simple GET request example:
-            $http({
-                method: 'GET',
-                url: 'https://fipe-parallelum.rhcloud.com/api/v1/carros/marcas'
-            }).then(function successCallback(response) {
-                vm.montadoras = response.data
-            }, function errorCallback(response) {
-                console.log(response.data)
-            });
-
-        }
+            PedidoService.buscarMontadorasAPI()
+            .success(function (data) {
+                vm.montadoras = data
+            })
+            .error(function (error, status) {
+                console.log(error, status)
+            })
+        } ();
+    
     vm.servicos = function carregarServicos() {
         return ServicosFactory.getServicos()
-    } ();
+    }();
 
     vm.buscarModelos =
         function buscarModelos(montadora) {
+            
             vm.veiculo.montadora = montadora.nome
             vm.show.montadora = false
             vm.show.modelo = true
-            $http({
-                method: 'GET',
-                url: 'https://fipe-parallelum.rhcloud.com/api/v1/carros/marcas/' + montadora.codigo + '/modelos'
-            }).then(function successCallback(response) {
-                vm.modelos = response.data.modelos
-                vm.anos = response.data.anos
-            }, function errorCallback(response) {
-                console.log(response.data)
-            });
+
+            PedidoService.buscarModelosAPI(montadora)
+            .success(function (data) {
+                vm.modelos = data.modelos
+                vm.anos = data.anos
+            })
+            .error(function (error, status) {
+                console.log(error, status)
+            })
         }
 
 
@@ -90,5 +91,4 @@ function PedidoController($http, PedidoService, ServicosFactory) {
             vm.show.filterServico = false
         }
 
-    vm.buscarMontadoras()
 }

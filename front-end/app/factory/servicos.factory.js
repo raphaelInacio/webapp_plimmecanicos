@@ -1,4 +1,7 @@
-angular.module('app').factory('ServicosFactory', ServicosFactory);
+angular
+.module('app')
+.factory('ServicosFactory', ServicosFactory);
+
 function ServicosFactory() {
    var _getServicos = function getServicos() {
         var servicos = [{
