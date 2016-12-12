@@ -19,6 +19,21 @@ var io = require('socket.io').listen(app.listen(port));
 // Require the configuration and the routes files, and pass
 // the app and io as arguments to the returned functions.
 
+
+var MongoClient = require('mongodb').MongoClient
+  , assert = require('assert');
+
+// Connection URL
+var url = 'mongodb://localhost:27017/plimmecanicos';
+
+// Use connect method to connect to the server
+MongoClient.connect(url, function(err, db) {
+  assert.equal(null, err);
+  console.log("Connected successfully to server");
+  db.close();
+});
+
+
 require('./config')(app, io);
 require('./routes')(app, io);
 
